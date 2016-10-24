@@ -11,7 +11,7 @@ import java.util.List;
  * Created by 46989075Y on 21/10/2016.
  */
 public interface EquipoRepository extends JpaRepository<Equipo, Long> {
-    List<Equipo> findByLocalidad(String localidad);
-    @Query("select  jugador.equipo from  Jugador jugador group by jugador.posicion")
-    List<Object[]> findAvgOfnumcananumasisnumrebByPosition ();
+   List<Equipo>findByLocalidad(String localidad);
+   // @Query("select  jugador.equipo from  Jugador jugador group by jugador.posicion")
+  //  List<Object[]> findAvgOfnumcananumasisnumrebByPosition ();
 }

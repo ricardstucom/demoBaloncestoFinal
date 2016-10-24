@@ -94,6 +94,12 @@ public class JugadorService {
 
         System.out.println("Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de\n" + "\n" + "canastas, asistencias y rebotes.");
         System.out.println(jugadorRepository.findAvgMinMaxOfnumcananumasisnumrebByPosition());
+
+        System.out.println("Jugadores de Eskapulats: "+ jugadorRepository.findJugadorbyEquipo(equipo2));
+
+        System.out.println("Jugadores de eskapulats alero: "+jugadorRepository.findJugadorPosicionByEquipo(equipo1,"Alero"));
+
+        System.out.println("Máximas canastas de eskapulats: "+jugadorRepository.findMaxNumcanaJugadorByEquipo(equipo2));
     }
 
 

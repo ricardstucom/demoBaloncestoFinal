@@ -12,7 +12,7 @@ public class EquipoService {
     @Autowired
     private EquipoRepository equipoRepository;
     public void testEquipo() {
-        System.out.println("Buscar por localidad");
+       System.out.println("Buscar por localidad");
         System.out.println(equipoRepository.findByLocalidad("Barcelona"));
-    }
+   }
 }

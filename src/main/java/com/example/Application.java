@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.domain.Equipo;
+import com.example.service.EquipoService;
 import com.example.service.JugadorService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +16,8 @@ public class Application {
 		JugadorService jugadorService=context.getBean(JugadorService.class);
 
 		jugadorService.testJugador();
+		EquipoService equipoService=context.getBean(EquipoService.class);
 
+		equipoService.testEquipo();
 }
 }

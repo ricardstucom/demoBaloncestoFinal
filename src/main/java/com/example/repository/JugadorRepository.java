@@ -5,6 +5,8 @@ package com.example.repository;
  */
 import java.time.LocalDate;
 import java.util.List;
+
+import com.example.domain.Equipo;
 import com.example.domain.Jugador;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +27,15 @@ public interface JugadorRepository  extends JpaRepository<Jugador, Long>{
     @Query("select jugador.posicion, avg(jugador.numcana), max(jugador.numcana), min(jugador.numcana), avg(jugador.numasis), max(jugador.numasis), min(jugador.numasis), avg(jugador.numreb), max(jugador.numreb), min(jugador.numreb) from Jugador jugador group by jugador.posicion")
     List<Object[]> findAvgMinMaxOfnumcananumasisnumrebByPosition ();
 
+
+
+    @Query("SELECT jugador FROM Jugador jugador WHERE jugador.equipo = :equipo")
+    List<Jugador> findJugadorbyEquipo(@Param("equipo") Equipo equipo);
+
+    @Query("SELECT jugador from Jugador jugador WHERE jugador.equipo = :equipo AND jugador.posicion = :posicion")
+    List<Jugador> findJugadorPosicionByEquipo(@Param("equipo") Equipo equipo, @Param("posicion") String posicion);
+
+    @Query("SELECT jugador from Jugador jugador WHERE jugador.equipo = :equipo AND jugador.numcana IN (SELECT MAX(jugador.numcana) FROM Jugador jugador WHERE jugador.equipo = :equipo)")
+    List<Jugador> findMaxNumcanaJugadorByEquipo(@Param("equipo") Equipo equipo);
 
 }
