@@ -37,29 +37,24 @@ public interface JugadorRepository  extends JpaRepository<Jugador, Long>{
 
    // @Query("SELECT jugador from Jugador jugador WHERE jugador.equipo = :equipo AND jugador.numcana IN (SELECT MAX(jugador.numcana) FROM Jugador jugador WHERE jugador.equipo = :equipo)")
     //List<Jugador> findMaxNumcanaJugadorByEquipo(@Param("equipo") Equipo equipo);
-
-    List<Jugador> findByNumcanaGreaterThan(Integer num);
-
-    List<Jugador> findByNombreOrderByNumcana();
-
-    List<Jugador> findAllByOrderByNumcana();
-
-    List<Jugador> findByNumcanaGreaterThanEqual(Integer numcana);
-
-    List<Jugador> findByNumcanaBetween(Integer min, Integer max);
+//-------------------------------------------------------------------------------------------------------------------
+  //  List<Jugador> findByNumcanaGreaterThan(Integer num);
+//-------------------------------------------------------------------------------------------------------------------
 
 
-    @Query("SELECT jugador.posicion, " +
-            " MIN(jugador.canasto)," +
-            " MAX(jugador.canasto), " +
-            "AVG(jugador.canasto)" +
-            "FROM Jugador jugador " +
-            "GROUP BY jugador.posicion")
-    List<Object[]> findByPosicionAndMedia();
+    List<Jugador> findAllByOrderByNumcana();//#1
 
-//    List<Jugador> findAllOrderByNumcana();
-//
-//    List<Jugador> findByNumcanaGreaterThanEqual(Integer numcana);
-//
-//    List<Jugador> findByNumcanaBetween(Integer min, Integer max);
+    List<Jugador> findByNumcanaGreaterThanEqual(Integer numcana);//#2
+
+   List<Jugador> findByNumcanaBetween(Integer min, Integer max);//#3
+// -------------------------------------------------------------------------------------------------------------------
+//    @Query("SELECT jugador.posicion, " +
+//            " MIN(jugador.canasto)," +
+//            " MAX(jugador.canasto), " +
+//            "AVG(jugador.canasto)" +
+//            "FROM Jugador jugador " +
+//            "GROUP BY jugador.posicion")
+//    List<Object[]> findByPosicionAndMedia();//#5
+//-------------------------------------------------------------------------------------------------------------------
+
 }

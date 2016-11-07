@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.JugadorController;
 import com.example.domain.Equipo;
 import com.example.service.EquipoService;
 import com.example.service.JugadorService;
@@ -19,5 +20,8 @@ public class Application {
 		EquipoService equipoService=context.getBean(EquipoService.class);
 
 		equipoService.testEquipo();
+
+		JugadorController jugadorController=context.getBean(JugadorController.class);
+
 }
 }

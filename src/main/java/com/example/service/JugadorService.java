@@ -99,8 +99,8 @@ public class JugadorService {
         //System.out.println("Jugadores de eskapulats alero: "+jugadorRepository.findJugadorPosicionByEquipo(equipo1,"Alero"));
 
        // System.out.println("Máximas canastas de eskapulats: "+jugadorRepository.findMaxNumcanaJugadorByEquipo(equipo2));
-        System.out.println("pelotas: ");
-        System.out.println(jugadorRepository.findByNombreOrderByNumcana());
+//        System.out.println("pelotas: ");
+//        System.out.println(jugadorRepository.findByNombreOrderByNumcana());
     }
 
 

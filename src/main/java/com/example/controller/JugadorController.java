@@ -19,37 +19,37 @@ import java.util.Map;
 @RequestMapping("/jugadores")
 public class JugadorController {
 
-    @Autowired
-    private JugadorRepository jugadorRepository;
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Jugador createJugador(@RequestBody Jugador jugador) {
-
-        return jugadorRepository.save(jugador);
-    }
+   @Autowired
+   private JugadorRepository jugadorRepository;
 //
-//    @PutMapping
-//    public Jugador updateJuador(@RequestBody Jugador jugador) {
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Jugador createJugador(@RequestBody Jugador jugador) {
+//
 //        return jugadorRepository.save(jugador);
 //    }
-@RequestMapping(method = RequestMethod.GET)
-public List<Jugador> findAll(){
-    List<Jugador> jugadorList = new ArrayList<>();
-    return jugadorRepository.findAll();
-}
-//    @GetMapping
-//    public List<Jugador> findAll() {
+////
+////    @PutMapping
+////    public Jugador updateJuador(@RequestBody Jugador jugador) {
+////        return jugadorRepository.save(jugador);
+////    }
+//@RequestMapping(method = RequestMethod.GET)
+//public List<Jugador> findAll(){
+//    List<Jugador> jugadorList = new ArrayList<>();
+//    return jugadorRepository.findAll();
+//}
+////    @GetMapping
+////    public List<Jugador> findAll() {
+////
+////        return jugadorRepository.findAll();
+////    }
 //
-//        return jugadorRepository.findAll();
-//    }
-
-    @RequestMapping(value="/{id}",
-    method = RequestMethod.GET)
-    public Jugador findById(@PathVariable Long id) {
-        Jugador jugador = jugadorRepository.findOne(id);
-        return jugador;
-    }
+//    @RequestMapping(value="/{id}",
+//    method = RequestMethod.GET)
+//    public Jugador findById(@PathVariable Long id) {
+//        Jugador jugador = jugadorRepository.findOne(id);
+//        return jugador;
+  //  }
 
 
 
@@ -69,7 +69,7 @@ public List<Jugador> findAll(){
 
 //    @GetMapping("/findAllOrderByPoints")
 //    public List<Jugador> findByNombreOrderByNumcana(){return jugadorRepository.findByNombreOrderByNumcana();}
-
+//-------------------------------------------------------------------------------------------------------------------
    @GetMapping("/findByNumcanaGreaterThanEqual/{numcana}")
     public List<Jugador> findByNumcanaGreaterThanEqual(@PathVariable Integer numcana){
 
@@ -85,29 +85,29 @@ public List<Jugador> findAll(){
     public List<Jugador> findAllOrderByCanasto() {
         return jugadorRepository.findAllByOrderByNumcana();
     }
-
-    @GetMapping("/posicionAndMedia")
-    public Map<String, EstadisticasPosicion> findByPosicionAndMedia(){
-
-        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
-
-        Map<String, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
-
-        estadisticasPosicions.
-                forEach(estadisticasPosicion -> {
-
-                    EstadisticasPosicion aux = new EstadisticasPosicion();
-                    aux.setPosicion((String)estadisticasPosicion[0]);
-                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
-                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
-                    aux.setAvgCanastas((Double) estadisticasPosicion[3]);
-
-                    estadisticasPosicionMap.put(aux.getPosicion(), aux);
-
-                });
-
-        return estadisticasPosicionMap;
-    }
+//
+//    @GetMapping("/posicionAndMedia")
+//    public Map<String, EstadisticasPosicion> findByPosicionAndMedia(){
+//
+//        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
+//
+//        Map<String, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
+//
+//        estadisticasPosicions.
+//                forEach(estadisticasPosicion -> {
+//
+//                    EstadisticasPosicion aux = new EstadisticasPosicion();
+//                    aux.setPosicion((String)estadisticasPosicion[0]);
+//                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
+//                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
+//                    aux.setAvgCanastas((Double) estadisticasPosicion[3]);
+//
+//                    estadisticasPosicionMap.put(aux.getPosicion(), aux);
+//
+//                });
+//
+//        return estadisticasPosicionMap;
+//    }
 }
 
 
