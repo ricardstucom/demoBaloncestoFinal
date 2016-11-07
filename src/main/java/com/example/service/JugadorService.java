@@ -74,32 +74,33 @@ public class JugadorService {
 
 
 
-        System.out.println("Buscar por nombre");
-        System.out.println(jugadorRepository.findByNombre("Alex"));
+       // System.out.println("Buscar por nombre");
+       // System.out.println(jugadorRepository.findByNombre("Alex"));
 
-        System.out.println("Numero canastas");
-        System.out.println(jugadorRepository.findByNumcanaGreaterThanEqual(2));
+        //System.out.println(jugadorRepository.findByNumcanaGreaterThanEqual(2));
 
-        System.out.println("Between");
-        System.out.println(jugadorRepository.findByNumasisBetween(2, 4));
+       // System.out.println("Between");
+       // System.out.println(jugadorRepository.findByNumasisBetween(2, 4));
 
-        System.out.println("Posición:");
-        System.out.println(jugadorRepository.findByPosicion("Alero"));
+       // System.out.println("Posición:");
+       // System.out.println(jugadorRepository.findByPosicion("Alero"));
 
-        System.out.println("Fecha:");
-        System.out.println(jugadorRepository.findByFechaBefore(LocalDate.of(1992,6,4)));
+       // System.out.println("Fecha:");
+       // System.out.println(jugadorRepository.findByFechaBefore(LocalDate.of(1992,6,4)));
 
-        System.out.println("media ordenada:");
-        System.out.println(jugadorRepository.findAvgOfnumcananumasisnumrebByPosition());
+       // System.out.println("media ordenada:");
+       // System.out.println(jugadorRepository.findAvgOfnumcananumasisnumrebByPosition());
 
-        System.out.println("Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de\n" + "\n" + "canastas, asistencias y rebotes.");
-        System.out.println(jugadorRepository.findAvgMinMaxOfnumcananumasisnumrebByPosition());
+        //System.out.println("Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de\n" + "\n" + "canastas, asistencias y rebotes.");
+       // System.out.println(jugadorRepository.findAvgMinMaxOfnumcananumasisnumrebByPosition());
 
-        System.out.println("Jugadores de Eskapulats: "+ jugadorRepository.findJugadorbyEquipo(equipo2));
+        //System.out.println("Jugadores de Eskapulats: "+ jugadorRepository.findJugadorbyEquipo(equipo2));
 
-        System.out.println("Jugadores de eskapulats alero: "+jugadorRepository.findJugadorPosicionByEquipo(equipo1,"Alero"));
+        //System.out.println("Jugadores de eskapulats alero: "+jugadorRepository.findJugadorPosicionByEquipo(equipo1,"Alero"));
 
-        System.out.println("Máximas canastas de eskapulats: "+jugadorRepository.findMaxNumcanaJugadorByEquipo(equipo2));
+       // System.out.println("Máximas canastas de eskapulats: "+jugadorRepository.findMaxNumcanaJugadorByEquipo(equipo2));
+        System.out.println("pelotas: ");
+        System.out.println(jugadorRepository.findByNombreOrderByNumcana());
     }
 
 
