@@ -115,6 +115,9 @@ List<Jugador> jugadores = jugadorRepository.findAll();
 
         jugadores.forEach(jugador ->
         jugadorMultimap.put(jugador.getPosicion(), jugador));
+
+        System.out.println(jugadorMultimap.get(Posicion.base));
+
         return jugadorMultimap.asMap();
     }
 }

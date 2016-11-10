@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ public class Equipo {
     @GeneratedValue
     private Long id;
     private String nombre;
+    @JsonIgnore
     private LocalDate fecha;
     private String localidad;
 
