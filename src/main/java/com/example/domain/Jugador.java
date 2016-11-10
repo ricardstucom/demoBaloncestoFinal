@@ -21,14 +21,16 @@ public class Jugador {
     private int numcana;
     private int numasis;
     private int numreb;
-    private String posicion;
+
     @ManyToOne
     private Equipo equipo;
+    @Enumerated(EnumType.STRING)
+    private Posicion posicion;
 
     public Jugador() {
     }
 
-    public Jugador(String nombre, LocalDate fecha, int numcana, int numasis, int numreb, String posicion) {
+    public Jugador(String nombre, LocalDate fecha, int numcana, int numasis, int numreb, Posicion posicion) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.numcana = numcana;
@@ -85,11 +87,12 @@ public class Jugador {
         this.numreb = numreb;
     }
 
-    public String getPosicion() {
+    public Posicion getPosicion() {
+
         return posicion;
     }
 
-    public void setPosicion(String posicion) {
+    public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
 

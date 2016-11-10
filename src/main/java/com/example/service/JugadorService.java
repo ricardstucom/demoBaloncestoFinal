@@ -5,6 +5,7 @@ package com.example.service;
  */
 import com.example.domain.Equipo;
 import com.example.domain.Jugador;
+import com.example.domain.Posicion;
 import com.example.repository.EquipoRepository;
 import com.example.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,17 @@ public class JugadorService {
 
     public void testJugador() {
 
-        Jugador jugador1 = new Jugador("Alex", LocalDate.of(1992, 5, 23), 3, 4, 5, "Base");
-        Jugador jugador2 = new Jugador("Alan", LocalDate.of(1998, 8, 28), 7, 8, 2, "Alero");
-        Jugador jugador3 = new Jugador("Erik", LocalDate.of(1996, 2, 12), 4, 6, 5, "Pivot");
-        Jugador jugador4 = new Jugador("Ricard", LocalDate.of(1995, 7, 17), 7, 1, 5, "Alero");
-        Jugador jugador5 = new Jugador("Arnau", LocalDate.of(1991, 7, 17), 7, 1, 5, "Alero");
+        Jugador jugador1 = new Jugador("Alex", LocalDate.of(1992, 5, 23), 3, 4, 5, Posicion.base);
+        Jugador jugador2 = new Jugador("Alan", LocalDate.of(1998, 8, 28), 7, 8, 2, Posicion.alero);
+        Jugador jugador3 = new Jugador("Erik", LocalDate.of(1996, 2, 12), 4, 6, 5, Posicion.pivot);
+        Jugador jugador4 = new Jugador("Ricard", LocalDate.of(1995, 7, 17), 7, 1, 5,Posicion.alero);
+        Jugador jugador5 = new Jugador("Arnau", LocalDate.of(1991, 7, 17), 7, 1, 5, Posicion.alero);
 
-        Jugador jugador6 = new Jugador("Alex2", LocalDate.of(1992, 5, 23), 3, 4, 5, "Base");
-        Jugador jugador7 = new Jugador("Alan2", LocalDate.of(1998, 8, 28), 7, 8, 2, "Alero");
-        Jugador jugador8 = new Jugador("Erik2", LocalDate.of(1996, 2, 12), 4, 6, 5, "Pivot");
-        Jugador jugador9 = new Jugador("Ricard2", LocalDate.of(1995, 7, 17), 7, 1, 5, "Alero");
-        Jugador jugador10 = new Jugador("Arnau2", LocalDate.of(1991, 7, 17), 7, 1, 5, "Alero");
+        Jugador jugador6 = new Jugador("Alex2", LocalDate.of(1992, 5, 23), 3, 4, 5, Posicion.base);
+        Jugador jugador7 = new Jugador("Alan2", LocalDate.of(1998, 8, 28), 7, 8, 2, Posicion.alero);
+        Jugador jugador8 = new Jugador("Erik2", LocalDate.of(1996, 2, 12), 4, 6, 5, Posicion.pivot);
+        Jugador jugador9 = new Jugador("Ricard2", LocalDate.of(1995, 7, 17), 7, 1, 5, Posicion.alero);
+        Jugador jugador10 = new Jugador("Arnau2", LocalDate.of(1991, 7, 17), 7, 1, 5, Posicion.alero);
 
 
         Equipo equipo1 = new Equipo("Stucom",LocalDate.of(1992,5,23),"Barcelona");

@@ -2,15 +2,15 @@ package com.example.controller;
 
 import com.example.controller.DTO.EstadisticasPosicion;
 import com.example.domain.Jugador;
+import com.example.domain.Posicion;
 import com.example.repository.JugadorRepository;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by 46989075y on 04/11/2016.
@@ -85,29 +85,38 @@ public class JugadorController {
     public List<Jugador> findAllOrderByCanasto() {
         return jugadorRepository.findAllByOrderByNumcana();
     }
-//
-//    @GetMapping("/posicionAndMedia")
-//    public Map<String, EstadisticasPosicion> findByPosicionAndMedia(){
-//
-//        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
-//
-//        Map<String, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
-//
-//        estadisticasPosicions.
-//                forEach(estadisticasPosicion -> {
-//
-//                    EstadisticasPosicion aux = new EstadisticasPosicion();
-//                    aux.setPosicion((String)estadisticasPosicion[0]);
-//                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
-//                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
-//                    aux.setAvgCanastas((Double) estadisticasPosicion[3]);
-//
-//                    estadisticasPosicionMap.put(aux.getPosicion(), aux);
-//
-//                });
-//
-//        return estadisticasPosicionMap;
-//    }
+
+    @GetMapping("/posicionAndMedia")
+    public Map<String, EstadisticasPosicion> findByPosicionAndMedia(){
+
+        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
+
+        Map<String, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
+
+        estadisticasPosicions.
+                forEach(estadisticasPosicion -> {
+
+                    EstadisticasPosicion aux = new EstadisticasPosicion();
+                    aux.setPosicion((String)estadisticasPosicion[0]);
+                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
+                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
+                    aux.setAvgCanastas((Double) estadisticasPosicion[3]);
+
+                    estadisticasPosicionMap.put(aux.getPosicion(), aux);
+
+                });
+
+        return estadisticasPosicionMap;
+    }
+    @GetMapping("/posicionAll")
+    public Map<Posicion, Collection<Jugador>> findByAllPosicion(){
+List<Jugador> jugadores = jugadorRepository.findAll();
+        ListMultimap<Posicion,Jugador> jugadorMultimap = ArrayListMultimap.create();
+
+        jugadores.forEach(jugador ->
+        jugadorMultimap.put(jugador.getPosicion(), jugador));
+        return jugadorMultimap.asMap();
+    }
 }
 
 

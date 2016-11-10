@@ -21,7 +21,7 @@ public class Application {
 
 		equipoService.testEquipo();
 
-		JugadorController jugadorController=context.getBean(JugadorController.class);
+
 
 }
 }

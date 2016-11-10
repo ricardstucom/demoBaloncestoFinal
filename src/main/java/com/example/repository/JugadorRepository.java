@@ -33,7 +33,7 @@ public interface JugadorRepository  extends JpaRepository<Jugador, Long>{
    // List<Jugador> findJugadorbyEquipo(@Param("equipo") Equipo equipo);
 
    // @Query("SELECT jugador from Jugador jugador WHERE jugador.equipo = :equipo AND jugador.posicion = :posicion")
-   // List<Jugador> findJugadorPosicionByEquipo(@Param("equipo") Equipo equipo, @Param("posicion") String posicion);
+   // List<Jugador> findJugadorPosicionByEquipo(@Param("equipo") Equipo equipo, @Param6("posicion") String posicion);
 
    // @Query("SELECT jugador from Jugador jugador WHERE jugador.equipo = :equipo AND jugador.numcana IN (SELECT MAX(jugador.numcana) FROM Jugador jugador WHERE jugador.equipo = :equipo)")
     //List<Jugador> findMaxNumcanaJugadorByEquipo(@Param("equipo") Equipo equipo);
@@ -47,14 +47,15 @@ public interface JugadorRepository  extends JpaRepository<Jugador, Long>{
     List<Jugador> findByNumcanaGreaterThanEqual(Integer numcana);//#2
 
    List<Jugador> findByNumcanaBetween(Integer min, Integer max);//#3
+
 // -------------------------------------------------------------------------------------------------------------------
-//    @Query("SELECT jugador.posicion, " +
-//            " MIN(jugador.canasto)," +
-//            " MAX(jugador.canasto), " +
-//            "AVG(jugador.canasto)" +
-//            "FROM Jugador jugador " +
-//            "GROUP BY jugador.posicion")
-//    List<Object[]> findByPosicionAndMedia();//#5
+    @Query("SELECT jugador.posicion, " +
+           " MIN(jugador.numcana)," +
+            " MAX(jugador.numcana), " +
+            "AVG(jugador.numcana)" +
+            "FROM Jugador jugador " +
+            "GROUP BY jugador.posicion")
+    List<Object[]> findByPosicionAndMedia();//#5
 //-------------------------------------------------------------------------------------------------------------------
 
 }
