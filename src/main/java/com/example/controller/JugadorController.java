@@ -1,17 +1,16 @@
 package com.example.controller;
 
 import com.example.controller.DTO.EstadisticasPosicion;
-import com.example.controller.DTO.Localidad;
+import com.example.controller.Util.HeaderUtil;
 import com.example.domain.Jugador;
 import com.example.domain.Posicion;
 import com.example.repository.JugadorRepository;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -43,12 +42,14 @@ public class JugadorController {
                     headers(
 
                         HeaderUtil.
-                            createFailureAlert("player", "idexists, "A new player cannot already have an ID");
-                    )
-            Jugador result = jugadorRepository
+                                createFailureAlert("player", "idexists", "A new player cannot already have an ID")).body(null);
+
+        }
+            Jugador result = jugadorRepository.save(jugador);
+        return ResponseEntity.created(new URI("/jugadores/"+ result.getId())).headers(HeaderUtil.createEntityCreationAlert("jugador", result.getId(). toString())) .body(result);
         }
 
-    }
+
 
 
 
