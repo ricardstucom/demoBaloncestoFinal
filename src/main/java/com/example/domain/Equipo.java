@@ -16,7 +16,7 @@ public class Equipo {
     @GeneratedValue
     private Long id;
     private String nombre;
-    @JsonIgnore
+    //@JsonIgnore
     private LocalDate fecha;
     private String localidad;
 

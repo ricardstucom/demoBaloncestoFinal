@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import com.example.controller.DTO.Localidad;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
@@ -115,4 +116,6 @@ public class Jugador {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+
+
 }

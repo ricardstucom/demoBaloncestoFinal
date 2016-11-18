@@ -56,6 +56,10 @@ public interface JugadorRepository  extends JpaRepository<Jugador, Long>{
             "FROM Jugador jugador " +
             "GROUP BY jugador.posicion")
     List<Object[]> findByPosicionAndMedia();//#5
+
+
+
+    //List<Jugador> jugadoresByLocalidad();
 //-------------------------------------------------------------------------------------------------------------------
 
 }

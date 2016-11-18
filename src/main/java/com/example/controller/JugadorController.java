@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.controller.DTO.EstadisticasPosicion;
+import com.example.controller.DTO.Localidad;
 import com.example.domain.Jugador;
 import com.example.domain.Posicion;
 import com.example.repository.JugadorRepository;
@@ -8,9 +9,12 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URISyntaxException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by 46989075y on 04/11/2016.
@@ -21,14 +25,37 @@ public class JugadorController {
 
    @Autowired
    private JugadorRepository jugadorRepository;
+//CREATED BASICO
+//@PostMapping
+//@ResponseStatus(HttpStatus.CREATED)
+//public Jugador createJugador(@RequestBody Jugador jugador) {
 //
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Jugador createJugador(@RequestBody Jugador jugador) {
+//    return jugadorRepository.save(jugador);
+//}
+
+    //CREATED CONTROL DE ERRORES
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Jugador> createJugador (@RequestBody Jugador jugador) throws URISyntaxException{
+        if(jugador.getId()!= null){
+            return ResponseEntity.
+                    badRequest().
+                    headers(
+
+                        HeaderUtil.
+                            createFailureAlert("player", "idexists, "A new player cannot already have an ID");
+                    )
+            Jugador result = jugadorRepository
+        }
+
+    }
+
+
+
+
+
+
 //
-//        return jugadorRepository.save(jugador);
-//    }
-////
 ////    @PutMapping
 ////    public Jugador updateJuador(@RequestBody Jugador jugador) {
 ////        return jugadorRepository.save(jugador);
@@ -108,18 +135,17 @@ public class JugadorController {
 
         return estadisticasPosicionMap;
     }
-    @GetMapping("/posicionAll")
-    public Map<Posicion, Collection<Jugador>> findByAllPosicion(){
-List<Jugador> jugadores = jugadorRepository.findAll();
-        ListMultimap<Posicion,Jugador> jugadorMultimap = ArrayListMultimap.create();
 
-        jugadores.forEach(jugador ->
-        jugadorMultimap.put(jugador.getPosicion(), jugador));
 
-        System.out.println(jugadorMultimap.get(Posicion.base));
+    @GetMapping("/GroupByPosition")
+    public Map<Posicion, List<Jugador>> getJugadoresGroupByPosicion(){
+               return jugadorRepository
+                                .findAll()
+                                .parallelStream()
+                                .collect(Collectors.groupingBy(Jugador::getPosicion));
+            }
 
-        return jugadorMultimap.asMap();
-    }
+
 }
 
 
